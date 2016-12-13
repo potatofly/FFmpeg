@@ -128,7 +128,7 @@ as切换到project界面，在src/main/目录下新建jni目录，将上述编�
 · 声明要加载的类库
 
 需要注意，C语言函数的声明要加上“native”关键字；加载类库的时候需要使用“System.loadLibrary()”方法。
-```
+```bash
 更改主函数MainActivity.java
 //加载.so库
     static {
@@ -144,9 +144,8 @@ as切换到project界面，在src/main/目录下新建jni目录，将上述编�
     public native String avformatinfo();
     public native String avcodecinfo();
     public native String avfilterinfo();
-    public native String configurationinfo();
-    
-    ```
+    public native String configurationinfo();    
+```
 根据Java对于C语言接口的定义，生成相应的接口函数声明。这一步需要用到JDK中的“javah”命令。命令行切换到src/main/java文件夹下，输入如下命令：<br>
 javah com.android.potatofly.ffmpegdemo.MainActivity<br>
 在src/main/java目录下会生成头文件,com_android_potatofly_ffmpegdemo_MainActivity.h<br>
@@ -160,7 +159,7 @@ javah com.android.potatofly.ffmpegdemo.MainActivity<br>
 ndk-build本身是一个脚本，位于NDK根目录下。切换到Android程序src/main/jni目录中，直接执行脚本ndk-build就可以了。<br>
 
 ##Step 4
-```
+```bash
 修改build.gradle文件:
 apply plugin: 'com.android.application'
 
